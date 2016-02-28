@@ -39,6 +39,9 @@ class User: NSObject {
         
     //NSNotificationCenter.defaultCenter().postNotificationName(userDidLogoutNotification, object: nil)
     }
+    
+    static let userDidLogoutNotification = "userDidLogout"
+    
     class var currentUser: User? {
         
         get {

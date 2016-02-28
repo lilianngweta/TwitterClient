@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
         
-        NSNotificationCenter.defaultCenter().addObserverForName("userDidLogout", object: nil, queue: NSOperationQueue.mainQueue()) { (NSNotification) -> Void in
+        NSNotificationCenter.defaultCenter().addObserverForName(User.userDidLogoutNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (NSNotification) -> Void in
             
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -41,8 +41,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             self.window?.rootViewController = vc
         }
+        
+        NSNotificationCenter.defaultCenter().addObserverForName("userDidLogout", object: nil, queue: NSOperationQueue.mainQueue()) { (NSNotification) -> Void in
             
             
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let vc = storyboard.instantiateInitialViewController()
+            
+            self.window?.rootViewController = vc
+            
+            
+        }
         
         //else{
             //print("There is no current user")
