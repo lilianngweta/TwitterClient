@@ -103,7 +103,7 @@ The following **additional** features are implemented:
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
 1. How to perform API calls is still challenging.
-2. How to implement the controls to retweet, favorite, and reply.
+2. How to implement the profile page.
 
 ## Video Walkthrough 
 
@@ -117,7 +117,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ##Challenges encountered while building the app
 
-This assignment doesn't have videos therefore it is very hard to figure out how to implement different functionalities without the videos
+This assignment didn't have videos therefore it wass very hard to figure out how to implement different functionalities without the videos
 
 ## License
 
