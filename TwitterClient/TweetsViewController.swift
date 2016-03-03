@@ -32,7 +32,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             
             for tweet in tweets {
-                print(tweet.user?.profileImageURL)
+                //print(tweet.user?.profileImageURL)
+                print(tweet.id)
             }
             }) { (error:NSError) -> () in
                 print(error.localizedDescription)

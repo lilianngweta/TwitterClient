@@ -15,6 +15,8 @@ class Tweet: NSObject {
     var timestamp: NSDate?
     var retweetCount: Int = 0
     var favoritesCount: Int = 0
+    var id: Int = 0
+    
     
     init(dictionary: NSDictionary) {
         
@@ -31,6 +33,9 @@ class Tweet: NSObject {
             timestamp = formatter.dateFromString(timestampString)
        
         }
+        
+        
+        id = (dictionary["id"] as? Int)!
     }
 
     class func tweetsWithArray(dictionaries: [NSDictionary]) -> [Tweet]{

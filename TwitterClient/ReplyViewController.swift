@@ -1,31 +1,33 @@
 //
-//  ComposeViewController.swift
+//  ReplyViewController.swift
 //  TwitterClient
 //
-//  Created by Lilian Ngweta on 2/27/16.
+//  Created by Lilian Ngweta on 3/2/16.
 //  Copyright © 2016 Lilian Ngweta. All rights reserved.
 //
 
 import UIKit
 
-class ComposeViewController: UIViewController {
+class ReplyViewController: UIViewController {
     
+    var username: String?
+    var id: Int = 0
     
-    @IBAction func onTweetButton(sender: AnyObject) {
+    @IBAction func onReplyButton(sender: AnyObject) {
         
-        TwitterClient.sharedInstance.compose(composeView.text)
+        TwitterClient.sharedInstance.reply(replyView.text, id: id)
         
         self.navigationController?.popViewControllerAnimated(true)
         
     }
     
-    @IBOutlet weak var composeView: UITextView!
+    @IBOutlet weak var replyView: UITextView!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //TwitterClient.sharedInstance.compose(composeView.text)
+        replyView.text = "@" + username!
 
         // Do any additional setup after loading the view.
     }

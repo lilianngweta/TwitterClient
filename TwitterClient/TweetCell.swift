@@ -41,6 +41,20 @@ class TweetCell: UITableViewCell {
         }
     }
     
+    @IBAction func onFavoriteButton(sender: AnyObject) {
+        
+        TwitterClient.sharedInstance.favorite(tweet!.id)
+        favoriteLabel.text = "favorited!"
+        
+    }
+    
+    
+    @IBAction func onRetweetButton(sender: AnyObject) {
+        
+        TwitterClient.sharedInstance.retweet(tweet!.id)
+        retweetLabel.text = "retweeted!"
+    }
+
     
     
     

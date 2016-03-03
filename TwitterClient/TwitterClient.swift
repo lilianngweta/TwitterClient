@@ -89,6 +89,26 @@ class TwitterClient: BDBOAuth1SessionManager {
         
         }
     
+    
+    
+    func userTimeLine(success: ([Tweet]) -> (), failure: (NSError) -> ()){
+        
+        GET("1.1/statuses/user_timeline.json?screen_name=Liliangweta", parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response:AnyObject?) -> Void in
+            let dictionaries = response as! [NSDictionary]
+            
+            let tweets = Tweet.tweetsWithArray(dictionaries)
+            
+            success(tweets)
+            
+            }, failure: { (TASK: NSURLSessionDataTask?, error: NSError) -> Void in
+                
+                failure(error)
+                
+        })
+        
+    }
+
+    
     func currentAccount(success: (User)->(), failure: (NSError)->()){
         
         
@@ -109,4 +129,58 @@ class TwitterClient: BDBOAuth1SessionManager {
         
     }
 
+    func compose(text: String ){
+        
+        
+        POST("1.1/statuses/update.json", parameters: ["status": text], success:{
+            (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
+            
+        },
+        
+            failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
+                
+            })
+        
+    }
+    
+    
+    func reply(text: String, id: Int ){
+        
+        
+        POST("1.1/statuses/update.json", parameters: ["status": text, "in_reply_to_status_id": id], success:{
+            (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
+            
+            },
+            
+            failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
+                
+        })
+        
+    }
+    
+    func favorite(id: Int) {
+        POST("1.1/favorites/create.json", parameters: ["id": id],
+            success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
+                print("favorited tweet: \(id)")
+            },
+            failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
+                print("failed to favorite")
+                print(error)
+            }
+        )
+    }
+    func retweet(id: Int) {
+        POST("1.1/statuses/retweet/\(id).json", parameters: ["id": id],
+            success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
+                print("retweeted tweet: \(id)")
+            },
+            failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
+                print("failed to retweet")
+                print(error)
+            }
+        )
+    }
+
+    
+    
 }
